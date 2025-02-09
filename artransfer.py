@@ -10,9 +10,11 @@ mpl.rcParams["axes.grid"] = False
 import time
 import functools
 
-content_path = tf.keras.utils.get_file('belfry.jpg','https://storage.googleapis.com/khanhlvg-public.appspot.com/arbitrary-style-transfer/belfry-2611573_1280.jpg')
-style_path = tf.keras.utils.get_file('style23.jpg','https://storage.googleapis.com/khanhlvg-public.appspot.com/arbitrary-style-transfer/style23.jpg')
+# content_path = tf.keras.utils.get_file('belfry.jpg','https://storage.googleapis.com/khanhlvg-public.appspot.com/arbitrary-style-transfer/belfry-2611573_1280.jpg')
+# style_path = tf.keras.utils.get_file('style23.jpg','https://storage.googleapis.com/khanhlvg-public.appspot.com/arbitrary-style-transfer/style23.jpg')
 
+content_path = "content2.jpg"
+style_path = "style_monet.jpg"
 style_predict_path = tf.keras.utils.get_file('style_predict.tflite', 'https://tfhub.dev/google/lite-model/magenta/arbitrary-image-stylization-v1-256/int8/prediction/1?lite-format=tflite')
 style_transform_path = tf.keras.utils.get_file('style_transform.tflite', 'https://tfhub.dev/google/lite-model/magenta/arbitrary-image-stylization-v1-256/int8/transfer/1?lite-format=tflite')
 
@@ -58,11 +60,14 @@ def imshow(image, title=None):
   if title:
     plt.title(title)
 
+plt.subplot(1, 1, 1)
+imshow(style_image, 'Style Image')
+
 plt.subplot(1, 2, 1)
 imshow(preprocessed_content_image, 'Content Image')
 
 plt.subplot(1, 2, 2)
-imshow(preprocessed_style_image, 'Style Image')
+imshow(preprocessed_style_image, 'Styled Image')
 
 # plt.show()
 
